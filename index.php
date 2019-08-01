@@ -11,8 +11,8 @@
     <title>Fer Swimwear</title>
   </head>
   <body>
-    <div class="flex-container parallax">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: rgba(250, 229, 211, 0.9)">
+    <div class="flex-container">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: rgba(250, 229, 211, 0.9)">
 <a class="navbar-brand mx-auto d-md-none" href="index.php" style="font-family: 'Norican', cursive; font-size: 2rem;"><img src="img/logo.png" alt="logo"></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
@@ -44,44 +44,31 @@
 </form> -->
 </div>
 </nav>
+
+
+    <div class="bd-example">
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-        </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="img/bg-1.png" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>#1#</h5>
-          <p>Primer ejemplo.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/bg-2.png" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>#2#</h5>
-          <p>Segundo ejemplo.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="img/bg-3.png" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>#3#</h5>
-          <p>Tercer ejemplo.</p>
-        </div>
-      </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/bg-1.png" class="d-block w-100" alt="...">
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+    <div class="carousel-item">
+      <img src="img/bg-2.png" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/bg-3.png" class="d-block w-100" alt="...">
+    </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
 </div>
 <div class="main">
 <section>
@@ -113,23 +100,49 @@
 </section>
 </div>
 </div>
+
+<!-- whatsapp -->
+<div class="btn-whatsapp">
+<a href="whatsapp://send?text= http://localhost/E-CommerceDH-master/" data-action="share/whatsapp/share"><img border="0" src="img/whatsapp33.jpg" width="50px" height="50px"></a>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script>
-M.AutoInit();
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.parallax');
-  var instances = M.Parallax.init(elems, options);
-});
-</script>
-<!--<script>$(window).scroll(function(){
+<!-- <script>$(window).scroll(function(){
         var scroll = $(window).scrollTop();
         if(scroll < 30){
             $('.fixed-top').css('background', 'transparent');
             } else{
             $('.fixed-top').css('background', 'rgba(250, 229, 211, 0.9)');
             }
-    });</script>-->
+    });</script> -->
   </body>
+  <!-- Footer -->
+  <footer>
+  <div class="container">
+    <div class="row">
+        <div class="col-xs-5 col-md-5">
+            <h5 class="text-muted lead">CONTACTO:</h5>
+            <h5 class="text-muted">
+            Evergreen Street<br>
+            Springfield, EEUU<br>
+            (011) 4356-6645.<br>
+          </h5>
+        </div>
+        <div class="col-xs-12 col-md-6">
+        <div class="pull-right">
+        <h6 class="text-muted lead">EN LAS REDES
+              <div class="redes-footer">
+                  <a href="https://www.facebook.com/"><img src="img/face_logo.png" width="30" alt=""></a>
+                  <a href="https://twitter.com/"><img src= "img/twitter_logo_azul.jpg" width="30" alt=""></a>
+                  <a href="https://www.instagram.com/"><img src="img/instagram_logo.jpg" width="48" alt=""></a></h6>
+              </div>
+        </div>
+
+    </div>
+    <center><div class="row"> <p class="text-muted small text-right">Mukineros.com @2019. | Todos los derechos reservados. |</p></div></center>
+  </div>
+</div>
+</footer>
 </html>
