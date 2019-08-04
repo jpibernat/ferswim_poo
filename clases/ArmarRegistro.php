@@ -21,6 +21,7 @@ class ArmarRegistro{
         
         $usuario = [
             "name"=>$registro->getNombre(),
+            "last_name"=>$registro->getApellido(),
             "email"=>$registro->getEmail(),
             "password"=> Encriptar::hashPassword($registro->getPassword()),
             "avatar"=>$avatar,

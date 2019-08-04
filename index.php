@@ -1,4 +1,6 @@
-<?php  ?>
+<?php 
+include_once('navbar.php');
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -12,41 +14,7 @@
   </head>
   <body>
     <div class="flex-container">
-      <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: rgba(250, 229, 211, 0.9)">
-<a class="navbar-brand mx-auto d-md-none" href="index.php" style="font-family: 'Norican', cursive; font-size: 2rem;"><img src="img/logo.png" alt="logo"></a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-<ul class="navbar-nav mr-auto">
-  <li class="nav-item active">
-    <a class="nav-link" href="index.php">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="preguntas.php">¿Preguntas?</a>
-  </li>
-  <li class="nav-item active d-none d-md-block" style="margin:0 30px">
-    <a class="navbar-brand mx-auto" href="index.php" style="font-family: 'Norican', cursive; font-size: 2rem;"><img src="img/logo.png" alt="logo"></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="registro.php">Registrate</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="ingreso.php">Ingresá</a>
-  </li>
-
-
-</ul>
-<!-- <form class="form-inline my-2 my-lg-0">
-  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-</form> -->
-</div>
-</nav>
-
-
-    <div class="bd-example">
+     <div class="bd-example">
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -117,32 +85,9 @@
             $('.fixed-top').css('background', 'rgba(250, 229, 211, 0.9)');
             }
     });</script> -->
+     <!-- Footer -->
+  <?php 
+include_once('footer.php');
+?>
   </body>
-  <!-- Footer -->
-  <footer>
-  <div class="container">
-    <div class="row">
-        <div class="col-xs-5 col-md-5">
-            <h5 class="text-muted lead">CONTACTO:</h5>
-            <h5 class="text-muted">
-            Evergreen Street<br>
-            Springfield, EEUU<br>
-            (011) 4356-6645.<br>
-          </h5>
-        </div>
-        <div class="col-xs-12 col-md-6">
-        <div class="pull-right">
-        <h6 class="text-muted lead">EN LAS REDES
-              <div class="redes-footer">
-                  <a href="https://www.facebook.com/"><img src="img/face_logo.png" width="30" alt=""></a>
-                  <a href="https://twitter.com/"><img src= "img/twitter_logo_azul.jpg" width="30" alt=""></a>
-                  <a href="https://www.instagram.com/"><img src="img/instagram_logo.jpg" width="48" alt=""></a></h6>
-              </div>
-        </div>
-
-    </div>
-    <center><div class="row"> <p class="text-muted small text-right">Mukineros.com @2019. | Todos los derechos reservados. |</p></div></center>
-  </div>
-</div>
-</footer>
 </html>

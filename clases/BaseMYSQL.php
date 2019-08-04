@@ -8,7 +8,7 @@ class BaseMYSQL extends BaseDatos{
             $baseDatos->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             return $baseDatos;
         } catch (PDOException $errores) {
-            echo "No me pude conectar a la BD ". $errores->getmessage();
+            echo "No se puede conectar a la base de datos ". $errores->getmessage();
             exit;
         }
     }
@@ -24,9 +24,10 @@ class BaseMYSQL extends BaseDatos{
     }
 
     static public function guardarUsuario($pdo,$usuario,$tabla,$avatar){
-        $sql = "insert into $tabla (name,email,password,avatar,role) values (:name,:email,:password,:avatar,:role )";
+        $sql = "insert into $tabla (name,last_name,email,password,avatar,role) values (:name,:last_name,:email,:password,:avatar,:role )";
         $query = $pdo->prepare($sql);
         $query->bindValue(':name',$usuario->getnombre());
+        $query->bindValue(':last_name',$usuario->getApellido());
         $query->bindValue(':email',$usuario->getEmail());
         $query->bindValue(':password',Encriptar::hashPassword($usuario->getPassword()));
         $query->bindValue(':avatar',$avatar);

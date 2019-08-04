@@ -1,11 +1,12 @@
 <?php
+include_once('navbar.php');
 require_once("autoload.php");
 if ($_POST){
   //Esta variable es quien controla si se desea guardar en archivo JSON o en MYSQL
   $tipoConexion = "MYSQL";
   // Si la función retorn false, significa que se va a guardar los datos en JSON, de lo contrario se guardará los datos en MYSQL
   if($tipoConexion=="JSON"){
-    $usuario = new Usuario($_POST["email"],$_POST["password"],$_POST["repassword"],$_POST["nombre"],$_FILES );
+    $usuario = new Usuario($_POST["email"],$_POST["password"],$_POST["repassword"],$_POST["nombre"],$_POST["apellido"],$_FILES );
   
     $errores = $validar->validacionUsuario($usuario, $_POST["repassword"]);
     
@@ -27,7 +28,7 @@ if ($_POST){
  else{
    //Si arriba en la variable $tipoConexion se coloco "MYSQL", entonces genero todo el trabajo pero con MYSQL.
   //Aquí genero mi objeto usuario, partiendo de la clase Usuario 
-  $usuario = new Usuario($_POST["email"],$_POST["password"],$_POST["repassword"],$_POST["nombre"],$_FILES );
+  $usuario = new Usuario($_POST["email"],$_POST["password"],$_POST["repassword"],$_POST["nombre"],$_POST["apellido"],$_FILES );
   //Aquí verifico si los datos registrados por el usuario pasan las validaciones
   $errores = $validar->validacionUsuario($usuario, $_POST["repassword"]);
   //De no existir errores entonces:
@@ -59,7 +60,8 @@ if ($_POST){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="master.css">
+  <link rel="stylesheet" href="css/master.css">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Norican&display=swap" rel="stylesheet">
   <title>Registro de Datos</title>
 </head>
 
@@ -80,9 +82,14 @@ if ($_POST){
       <article class="col-12  " >
           <h2>Formulario de registro de datos</h2>
           <form action="" method="POST" enctype= "multipart/form-data"  >
-            <label> Usuario:</label>
+            <label>Nombre:</label>
             
-            <input name="nombre" type="text" id="nombre"  value="<?=(isset($errores["nombre"]) )? "" : inputUsuario("nombre");?>" placeholder="Nombre de usuario..." />
+            <input name="nombre" type="text" id="nombre"  value="<?=(isset($errores["nombre"]) )? "" : inputUsuario("nombre");?>" placeholder="Nombre" />
+            <br>
+
+            <label>Apellido:</label>
+            
+            <input name="apellido" type="text" id="apellido"  value="<?=(isset($errores["apellido"]) )? "" : inputUsuario("apellido");?>" placeholder="Apellido" />
             <br>
             
             <label>Email:</label>
@@ -91,11 +98,11 @@ if ($_POST){
             <br>
             <label>Contraseña:</label>
           
-            <input name="password" type="password" id="password" value="" placeholder="Contraseña..." />
+            <input name="password" type="password" id="password" value="" placeholder="Contraseña" />
             <br>
             <label>Confirmar contraseña:</label>
             
-            <input name="repassword" type="password" id="repassword" value="" placeholder="Rectifique su contraseña" />
+            <input name="repassword" type="password" id="repassword" value="" placeholder="Repita su contraseña" />
             <br>
             <input  type="file" name="avatar" value=""/>
             <br>
@@ -112,6 +119,9 @@ if ($_POST){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </div>
+  <!-- Footer -->
+<?php 
+include_once('footer.php');
+?>
 </body>
-
 </html>

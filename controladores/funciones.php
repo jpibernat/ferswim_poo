@@ -12,6 +12,13 @@ function validar($datos,$bandera){
             $errores["nombre"]= "El campo nombre no debe estar vacio";
         }
     }
+    
+    if(isset($datos["apellido"])){
+        $nombre = trim($datos["apellido"]);
+        if(empty($apellido)){
+            $errores["apellido"]= "El campo apellido no debe estar vacio";
+        }
+    }
 
     $email = trim($datos["email"]);
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -74,6 +81,7 @@ function armarAvatar($imagen){
 function armarRegistro($datos,$imagen){
     $usuario = [
         "nombre"=>$datos["nombre"],
+        "apellido"=>$datos["apellido"],
         "email"=>$datos["email"],
         "password"=> password_hash($datos["password"],PASSWORD_DEFAULT),
         "avatar"=>$imagen,
@@ -150,6 +158,7 @@ function armarRegistroOlvide($datos){
 //Aqui creo los las variables de session y de cookie de mi usuario que se está loguendo
 function seteoUsuario($user,$dato){
     $_SESSION["nombre"]=$user["nombre"];
+    $_SESSION["apellido"]=$user["apellido"];
     $_SESSION["email"] = $user["email"];
     $_SESSION["perfil"]= $user["perfil"];
     $_SESSION["avatar"]= $user["avatar"];

@@ -10,10 +10,17 @@ class Validador{
                 $errores["nombre"]= "El campo nombre no debe estar vacio";
             }
         }
-    
+        
+        $apellido = trim($usuario->getApellido());
+        if(isset($apellido)) {
+            if(empty($apellido)){
+                $errores["apellido"]= "El campo apellido no debe estar vacio";
+            }
+        }
+
         $email = trim($usuario->getEmail());
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $errores["email"]="Email invalido !!!!!";
+            $errores["email"]="Introduzca un Email valido";
         }
         $password= trim($usuario->getPassword());
    
@@ -21,7 +28,7 @@ class Validador{
         
 
         if(empty($password)){
-            $errores["password"]= "Hermano querido el campo password no lo podés dejar en blanco";
+            $errores["password"]= "El campo no puede estar vacio";
         }elseif (strlen($password)<6) {
             $errores["password"]="La contraseña debe tener como mínimo 6 caracteres";
         }
@@ -37,7 +44,7 @@ class Validador{
                 $nombre = $_FILES["avatar"]["name"];
                 $ext = pathinfo($nombre,PATHINFO_EXTENSION);
                 if($ext != "png" && $ext != "jpg"){
-                    $errores["avatar"]="Debe seleccionar archivo png ó jpg";
+                    $errores["avatar"]="Debe seleccionar archivo jpg o png";
                 }
             }
         }
@@ -50,12 +57,12 @@ class Validador{
     
         $email = trim($usuario->getEmail());
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $errores["email"]="Email invalido !!!!!";
+            $errores["email"]="Email invalido";
         }
         $password= trim($usuario->getPassword());
        
         if(empty($password)){
-            $errores["password"]= "Hermano querido el campo password no lo podés dejar en blanco";
+            $errores["password"]= "El campo no puede estar vacio";
         }elseif (strlen($password)<6) {
             $errores["password"]="La contraseña debe tener como mínimo 6 caracteres";
         }
@@ -69,7 +76,7 @@ class Validador{
     
         $email = trim($usuario->getEmail());
         if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            $errores["email"]="Email invalido !!!!!";
+            $errores["email"]="Email invalido";
         }
         $password= trim($usuario->getPassword());
    
@@ -77,12 +84,12 @@ class Validador{
         
 
         if(empty($password)){
-            $errores["password"]= "Hermano querido el campo password no lo podés dejar en blanco";
+            $errores["password"]= "El campo no puede estar vacio";
         }elseif (strlen($password)<6) {
             $errores["password"]="La contraseña debe tener como mínimo 6 caracteres";
         }
         if(empty($repassword)){
-            $errores["repassword"]= "Hermano querido el campo confirmar nuevo password no lo podés dejar en blanco";
+            $errores["repassword"]= "El campo no puede estar vacio";
         }
     
         return $errores;
@@ -90,4 +97,3 @@ class Validador{
 
 
 }
-

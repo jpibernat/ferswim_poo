@@ -5,10 +5,9 @@
 }
 
 body{
-  background-color: #fdf2e9
+  background-color: #fdf2e9;
+  min-height: 100vh;
 }
-
-
 
 .parallax{
   background-attachment: fixed;
@@ -166,6 +165,37 @@ span{
 }
 
 
+footer {
+	background-color:#1A1A1A;
+	height: 50%;
+  color: white;
+  padding: 15px;
+}
+
+.main1 {
+  display:flex;
+  margin:0 auto;
+}
+
+a img:hover {
+    color: white;
+}
+h6{
+  float: right;
+}
+
+.btn-whatsapp {
+display:block;
+width:70px;
+height:70px;
+color#fff;
+position: fixed;
+right:20px;
+bottom:20px;
+border-radius:50%;
+line-height:80px;
+text-align:center;
+z-index:999;}
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
   article img{
@@ -200,37 +230,4 @@ span{
     overflow: hidden;
     margin-bottom: 10px;
   }
-
 }
-
-footer {
-	background-color:#1A1A1A;
-	height: 50%;
-  color: white;
-  padding: 15px;
-}
-
-.main1 {
-  display:flex;
-  margin:0 auto;
-}
-
-a img:hover {
-    color: white;
-}
-h6{
-  float: right;
-}
-
-.btn-whatsapp {
-display:block;
-width:70px;
-height:70px;
-color#fff;
-position: fixed;
-right:20px;
-bottom:20px;
-border-radius:50%;
-line-height:80px;
-text-align:center;
-z-index:999;
