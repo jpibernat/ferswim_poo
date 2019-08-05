@@ -41,7 +41,7 @@ $listadoPreguntas = Preguntas::listado($pdo,'faq');
 
                   <th scope="row"><?= $value["id"] ?></th>
                   <td><?=$value["question"];?></td>
-                  <td><a href="detallePegunta.php?id=<?=$value['id'];?>">
+                  <td><a href="detallePregunta.php?id=<?=$value['id'];?>">
                         <i class="fas fa-eye"></i>
                       </a>
                   </td>

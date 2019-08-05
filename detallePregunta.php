@@ -3,7 +3,7 @@
 <?php
 require_once("autoload.php");
 $id_pregunta=$_GET["id"];//hay que definir el id_pregunta ¿se necesita crear una clave foreanea?
-$preguntaSeleccionada = Pregunta::mostrarPregunta($pdo,'faq',$id_pregunta)//hay que definir el id_pregunta
+$preguntaSeleccionada = Preguntas::mostrarPregunta($pdo,'faq',$id_pregunta)//hay que definir el id_pregunta
 ?>
 <html lang="es" dir="ltr">
   <head>
@@ -15,7 +15,7 @@ $preguntaSeleccionada = Pregunta::mostrarPregunta($pdo,'faq',$id_pregunta)//hay 
     <h1>Detalle de pregunta</h1>
     <!--Aquí les dejo a su imaginación y creativodad para jugar con esto como quieran-->
     <?php foreach ($preguntaSeleccionada as $key => $value):?>
-      <h2><?= $value["question"] ;?></h2>
+      <h2><?= $value['question'] ;?></h2>
     <?php endforeach;?>
     <ul>
     <?php foreach ($preguntaSeleccionada as $index => $attributes) : ?>
