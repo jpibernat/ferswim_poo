@@ -8,7 +8,7 @@ class BaseMYSQL extends BaseDatos{
             $baseDatos->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             return $baseDatos;
         } catch (PDOException $errores) {
-            echo "No se puede conectar a la base de datos ". $errores->getmessage();
+            echo "No se puede conectar a la base de datos". $errores->getmessage();
             exit;
         }
     }
