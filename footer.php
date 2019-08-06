@@ -12,7 +12,7 @@
 </head>
 <body>
 <footer class="footer mt-auto py-3">
-  <div class="container">
+  <div class="fcontainer">
     <div class="row">
         <div class="col-xs-5 col-md-5">
             <h5 class="text-muted lead">CONTACTO:</h5>

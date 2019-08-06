@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 CREATE DATABASE  IF NOT EXISTS `fer_swimwear` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
-=======
-CREATE DATABASE IF NOT EXISTS `fer_swimwear` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
->>>>>>> 07579abdbdf6a0cdcf7524743bf28d8f2d7753d2
 USE `fer_swimwear`;
 -- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)
 --

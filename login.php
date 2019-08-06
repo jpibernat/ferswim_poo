@@ -81,12 +81,12 @@ if($_POST){
       <?php endif;?>
 
   
-    <section class="row  text-center ">
-      <article class="col-12  " >
+    <section class="row  text-center">
+      <article class="col-12">
           <h2>Inicio de sesión</h2>
-          <form action="" method="POST"   >
+          <form action="" method="POST">
             <label>Email:</label>
-            <input name="email" type="text" id="email"   value="<?=isset($errores["email"])? "":inputUsuario("email") ;?>" placeholder="Correo electrónico"/>
+            <input name="email" type="text" id="email" value="<?=isset($errores["email"])? "":inputUsuario("email") ;?>" placeholder="Correo electrónico"/>
             <br>
             <label>Contraseña:</label>
           

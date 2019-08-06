@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/navstyles.css">
+    <link rel="stylesheet" href="css/master.css">
     <title>Document</title>
 </head>
 <body>
-    <nav>
+    <nav class="fixed-top">
         <ul class="navlinks">
             <li><a href="index.php">Home</a></li>
             <li><a href="preguntas.php">Preguntas</a></li>
