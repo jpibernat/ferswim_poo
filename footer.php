@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Norican&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="css/master.css?v=<?php echo time(); ?>">
+    <script src="https://use.fontawesome.com/4e066721be.js"></script>
+    <script src="https://kit.fontawesome.com/519acca20a.js"></script>
 </head>
 <body>
 <footer class="footer mt-auto py-3">
@@ -22,11 +24,11 @@
         </div>
         <div class="col-xs-12 col-md-6">
         <div class="pull-right">
-        <h6 class="text-muted lead">EN LAS REDES
+           <h6 class="text-muted lead">EN LAS REDES</h6>
               <div class="redes-footer">
-                  <a href="https://www.facebook.com/"><img src="img/face_logo.png" width="30" alt=""></a>
-                  <a href="https://twitter.com/"><img src= "img/twitter_logo_azul.jpg" width="30" alt=""></a>
-                  <a href="https://www.instagram.com/"><img src="img/instagram_logo.jpg" width="48" alt=""></a></h6>
+                  <a href="https://www.facebook.com/"><i class="fab fa-facebook-f fa-2x"></i></a>
+                  <a href="https://twitter.com/"><i class="fab fa-twitter fa-2x"></i></a>
+                  <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i></a>
               </div>
         </div>
     </div>

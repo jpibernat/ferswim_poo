@@ -71,7 +71,7 @@ include_once('navbar.php');
 
 <!-- whatsapp -->
 <div class="btn-whatsapp">
-<a href="whatsapp://send?text= http://localhost/E-CommerceDH-master/" data-action="share/whatsapp/share"><img border="0" src="img/whatsapp33.jpg" width="50px" height="50px"></a>
+<a href="whatsapp://send?text= http://localhost/E-CommerceDH-master/" data-action="share/whatsapp/share"><i class="fab fa-whatsapp fa-3x"></i></a>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
