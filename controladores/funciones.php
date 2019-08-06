@@ -12,7 +12,7 @@ function validar($datos,$bandera){
             $errores["nombre"]= "El campo nombre no debe estar vacio";
         }
     }
-    
+
     if(isset($datos["apellido"])){
         $nombre = trim($datos["apellido"]);
         if(empty($apellido)){
@@ -28,9 +28,9 @@ function validar($datos,$bandera){
     if(isset($datos["repassword"])){
         $repassword = trim($datos["repassword"]);
     }
-    
+
     if(empty($password)){
-        $errores["password"]= "Hermano mio el campo password no lo podés dejar en blanco";
+        $errores["password"]= "Este campo no puede quedar vacío";
     }elseif (strlen($password)<6) {
         $errores["password"]="La contraseña debe tener como mínimo 6 caracteres";
     }
@@ -39,18 +39,18 @@ function validar($datos,$bandera){
             $errores["repassword"]="Las contraseñas no coinciden";
         }
     }
-    
+
     //Esta condición me ayuda a identificar de que proceso vengo, es decir de Registro, Login o de Olvide mi Contraseña, para registro manejo la bandera "registro" y para Olvide mi contraseña uso la bandera "olvide"
     if($bandera == "registro"){
-        if($_FILES["avatar"]["error"]!=0){
-            $errores["avatar"]="Error debe subir imagen";
+        if($_FILES["imagenes"]["error"]!=0){
+            $errores["imagenes"]="Error debe subir imagen";
         }
-        $nombre = $_FILES["avatar"]["name"];
+        $nombre = $_FILES["imagenes"]["name"];
         $ext = pathinfo($nombre,PATHINFO_EXTENSION);
         if($ext != "png" && $ext != "jpg"){
-            $errores["avatar"]="Debe seleccionar archivo png ó jpg";
+            $errores["avatar"]="Seleccione archivo png ó jpg";
         }
-    
+
     }
 
     return $errores;
@@ -64,9 +64,9 @@ function inputUsuario($campo){
 
 //Esta función nos permite armar el registro cuando el usuario selecciona el avatar
 function armarAvatar($imagen){
-    $nombre = $imagen["avatar"]["name"];
+    $nombre = $imagen["imagen"]["name"];
     $ext = pathinfo($nombre,PATHINFO_EXTENSION);
-    $archivoOrigen = $imagen["avatar"]["tmp_name"];
+    $archivoOrigen = $imagen["imagen"]["tmp_name"];
     $archivoDestino = dirname(__DIR__);
     $archivoDestino = $archivoDestino."/imagenes/";
     $avatar = uniqid();
@@ -105,7 +105,7 @@ function buscarEmail($email){
             }
         }
     }
-    
+
     return null;
 }
 
@@ -116,7 +116,7 @@ function abrirBaseDatos(){
         $baseDatosJson = explode(PHP_EOL,$baseDatosJson);
         //Aquí saco el ultimo registro, el cual está en blanco
         array_pop($baseDatosJson);
-        //Aquí recooro el array y creo mi array con todos los usuarios 
+        //Aquí recooro el array y creo mi array con todos los usuarios
         foreach ($baseDatosJson as  $usuarios) {
             $arrayUsuarios[]= json_decode($usuarios,true);
         }
@@ -124,26 +124,26 @@ function abrirBaseDatos(){
         return $arrayUsuarios;
     }else{
         return null;
-    }    
+    }
 }
 
 //Esta función la cree para lograr determinar la creación del archivo json, pero ahora con la nueva clave del usuario, ya que el usuairo se le habia olvidado la misma, lo puedo hacer en una sóla función, sin embargo lo realice por separado, para que ustedes lo comprendieran mejor, trabajando todo por parte
 function armarRegistroOlvide($datos){
     $usuarios = abrirBaseDatos();
-    
+
     foreach ($usuarios as $key=>$usuario) {
-        
+
         if($datos["email"]==$usuario["email"]){
             //Esta línea se las comente para que a futuro puedan probar si la clave nueva la van a grabar correctamente, la idea es verla antes de hashearla. le pueden aplicar un dd() y verificar que les trae
             //$usuario["password"]= $datos["password"];
             $usuario["password"]= password_hash($datos["password"],PASSWORD_DEFAULT);
             //Aquí guardamos el registro del usuario, pero con el password hasheado
-            $usuarios[$key] = $usuario;    
+            $usuarios[$key] = $usuario;
         }
         //Si no es el usuario, entonces va de igual forma a guardar todo los usuarios
-        $usuarios[$key] = $usuario;    
+        $usuarios[$key] = $usuario;
     }
-    
+
     //Esto se los coloque para que sepan que con esta función podemos borrar un archivo
     unlink("usuarios.json");
     //Aquí vuelvo a recorrer el array para poder guardar un registro bajo el otro, haciendo uso de la constante de php PHP_EOL
@@ -151,7 +151,7 @@ function armarRegistroOlvide($datos){
         $jsusuario = json_encode($usuario);
         file_put_contents('usuarios.json',$jsusuario. PHP_EOL,FILE_APPEND);
     }
- 
+
 //Esta función no retorna nada, ya que su  responsabilidad es guardar al usuario, pero con su nueva contraseña
 }
 
@@ -177,5 +177,5 @@ function validarUsuario(){
     }else{
         return false;
     }
-    
+
 }
