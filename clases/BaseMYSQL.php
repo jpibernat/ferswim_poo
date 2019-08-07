@@ -13,9 +13,7 @@ class BaseMYSQL extends BaseDatos{
         }
     }
     static public function buscarPorEmail($email,$pdo,$tabla){
-        //Aquí hago la sentencia select, para buscar el email, estoy usando bindeo de parámetros por value
         $sql = "select * from $tabla where email = :email";
-        // Aquí ejecuto el prepare de los datos
         $query = $pdo->prepare($sql);
         $query->bindValue(':email',$email);
         $query->execute();
@@ -35,7 +33,6 @@ class BaseMYSQL extends BaseDatos{
         $query->execute();
 
     }
-  
     public function leer(){
         //A futuro trabajaremos en esto
     }
