@@ -2,18 +2,23 @@
 
 <?php
 require_once("autoload.php");
-$id_pregunta=$_GET["id"];//hay que definir el id_pregunta ¿se necesita crear una clave foreanea?
-$preguntaSeleccionada = Preguntas::mostrarPregunta($pdo,'faq',$id_pregunta)//hay que definir el id_pregunta
+$id_pregunta=$_GET["id"];
+$preguntaSeleccionada = Preguntas::mostrarPregunta($pdo,'faq',$id_pregunta)
 ?>
 <html lang="es" dir="ltr">
   <head>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta charset="utf-8">
+    <meta charset="utf-8"><meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Norican&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="css/master.css?v=<?php echo time(); ?>">
     <title>Preguntas</title>
   </head>
   <body>
     <h1>Detalle de pregunta</h1>
-    <!--Aquí les dejo a su imaginación y creativodad para jugar con esto como quieran-->
+    
     <?php foreach ($preguntaSeleccionada as $key => $value):?>
       <h2><?= $value['question'] ;?></h2>
     <?php endforeach;?>

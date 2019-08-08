@@ -7,14 +7,14 @@ class Validador{
         $nombre = trim($usuario->getNombre());
         if(isset($nombre)) {
             if(empty($nombre)){
-                $errores["nombre"]= "El campo nombre no debe estar vacio";
+                $errores["nombre"]= "El campo nombre no puede estar vacio";
             }
         }
         
         $apellido = trim($usuario->getApellido());
         if(isset($apellido)) {
             if(empty($apellido)){
-                $errores["apellido"]= "El campo apellido no debe estar vacio";
+                $errores["apellido"]= "El campo apellido no puede estar vacio";
             }
         }
 
@@ -39,19 +39,19 @@ class Validador{
         }
         if($usuario->getAvatar()!=null){
             if($_FILES["avatar"]["error"]!=0){
-                $errores["avatar"]="Error debe subir imagen";
+                $errores["avatar"]="Se debe subir una imagen";
             }else{
                 $nombre = $_FILES["avatar"]["name"];
                 $ext = pathinfo($nombre,PATHINFO_EXTENSION);
                 if($ext != "png" && $ext != "jpg"){
-                    $errores["avatar"]="Debe seleccionar archivo jpg o png";
+                    $errores["avatar"]="La extension del  archivo debe ser .PNG o .JPG";
                 }
             }
         }
     
         return $errores;
     }
-    //Metodo creado para validar el login del usuario
+
     public function validacionLogin($usuario){
         $errores=array();
     
@@ -69,7 +69,7 @@ class Validador{
     
         return $errores;
     }
-    //Método para validar si el usuario desea recuperar su contraseña
+    
     public function validacionOlvide($usuario){
         
         $errores=array();

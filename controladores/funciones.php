@@ -20,7 +20,7 @@ function validar($datos,$bandera){
 
     $email = trim($datos["email"]);
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $errores["email"]="Email invalido !!!!!";
+        $errores["email"]="El Email es invalido";
     }
     $password= trim($datos["password"]);
     if(isset($datos["repassword"])){
@@ -28,9 +28,9 @@ function validar($datos,$bandera){
     }
     
     if(empty($password)){
-        $errores["password"]= "Hermano mio el campo password no lo podés dejar en blanco";
+        $errores["password"]= "La contraseña debe tener al menos 6 caracteres";
     }elseif (strlen($password)<6) {
-        $errores["password"]="La contraseña debe tener como mínimo 6 caracteres";
+        $errores["password"]="La contraseña debe tener al menos 6 caracteres";
     }
     if(isset($datos["repassword"])){
         if ($password != $repassword) {
@@ -41,12 +41,12 @@ function validar($datos,$bandera){
 
     if($bandera == "registro"){
         if($_FILES["avatar"]["error"]!=0){
-            $errores["avatar"]="Error debe subir imagen";
+            $errores["avatar"]="Debe seleccionar una imagen";
         }
         $nombre = $_FILES["avatar"]["name"];
         $ext = pathinfo($nombre,PATHINFO_EXTENSION);
         if($ext != "png" && $ext != "jpg"){
-            $errores["avatar"]="Debe seleccionar archivo png ó jpg";
+            $errores["avatar"]="La extension del archivo debbe ser .PNG o .JPG";
         }
     
     }

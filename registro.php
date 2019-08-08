@@ -2,9 +2,9 @@
 include_once('navbar.php');
 require_once("autoload.php");
 if ($_POST){
-  //Esta variable es quien controla si se desea guardar en archivo JSON o en MYSQL
+  
   $tipoConexion = "MYSQL";
-  // Si la función retorn false, significa que se va a guardar los datos en JSON, de lo contrario se guardará los datos en MYSQL
+  
   if($tipoConexion=="JSON"){
     $usuario = new Usuario($_POST["email"],$_POST["password"],$_POST["repassword"],$_POST["nombre"],$_POST["apellido"],$_FILES );
   
@@ -26,23 +26,22 @@ if ($_POST){
     }
   }
  else{
-   //Si arriba en la variable $tipoConexion se coloco "MYSQL", entonces genero todo el trabajo pero con MYSQL.
-  //Aquí genero mi objeto usuario, partiendo de la clase Usuario 
+  
   $usuario = new Usuario($_POST["email"],$_POST["password"],$_POST["repassword"],$_POST["nombre"],$_POST["apellido"],$_FILES );
-  //Aquí verifico si los datos registrados por el usuario pasan las validaciones
+  
   $errores = $validar->validacionUsuario($usuario, $_POST["repassword"]);
-  //De no existir errores entonces:
+  
   if(count($errores)==0){
-    //Busco a ver si el usuario existe o no en la base de datos
+    
     $usuarioEncontrado = BaseMYSQL::buscarPorEmail($usuario->getEmail(),$pdo,'users');
     if($usuarioEncontrado != false){
       $errores["email"]= "Usuario ya Registrado";
     }else{
-      //Aquí guardo en el servidor la foto que el usuario seleccionó
+      
       $avatar = $registro->armarAvatar($usuario->getAvatar());
-      //Aquí procedo a guardar los datos del usuario en la base de datos, ,aquí le paso el objeto PDO, el objeto usuario, la tabla donde se va a guardar los datos y el nombre del archivo de la imagen del usuario.
+      
       BaseMYSQL::guardarUsuario($pdo,$usuario,'users',$avatar);
-      //Aquí redirecciono el usuario al login
+      
       redirect ("login.php");
     }
   }
@@ -56,13 +55,16 @@ if ($_POST){
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/master.css">
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Norican&display=swap" rel="stylesheet">
-  <title>Registro de Datos</title>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Norican&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="css/master.css?v=<?php echo time(); ?>">
+    <script src="https://use.fontawesome.com/4e066721be.js"></script>
+    <script src="https://kit.fontawesome.com/519acca20a.js"></script>
+    <title>Fer Swimwear</title>
 </head>
 
 <body>
@@ -80,36 +82,40 @@ if ($_POST){
   
     <section class="row  text-center ">
       <article class="col-12  " >
-          <h2>Formulario de registro de datos</h2>
+          <h2>Registrate</h2>
           <form action="" method="POST" enctype= "multipart/form-data"  >
             <label>Nombre:</label>
             
-            <input name="nombre" type="text" id="nombre"  value="<?=(isset($errores["nombre"]) )? "" : inputUsuario("nombre");?>" placeholder="Nombre" />
+            <input class="form-control" name="nombre" type="text" id="nombre"  value="<?=(isset($errores["nombre"]) )? "" : inputUsuario("nombre");?>" placeholder="Nombre" />
             <br>
 
             <label>Apellido:</label>
             
-            <input name="apellido" type="text" id="apellido"  value="<?=(isset($errores["apellido"]) )? "" : inputUsuario("apellido");?>" placeholder="Apellido" />
+            <input class="form-control" name="apellido" type="text" id="apellido"  value="<?=(isset($errores["apellido"]) )? "" : inputUsuario("apellido");?>" placeholder="Apellido" />
             <br>
             
             <label>Email:</label>
           
-            <input name="email" type="text" id="email" value="<?=isset($errores["email"])? "":inputUsuario("email") ;?>" placeholder="Correo electrónico"/>
+            <input class="form-control" name="email" type="text" id="email" value="<?=isset($errores["email"])? "":inputUsuario("email") ;?>" placeholder="Correo electrónico"/>
             <br>
             <label>Contraseña:</label>
           
-            <input name="password" type="password" id="password" value="" placeholder="Contraseña" />
+            <input class="form-control" name="password" type="password" id="password" value="" placeholder="Contraseña" />
             <br>
             <label>Confirmar contraseña:</label>
             
-            <input name="repassword" type="password" id="repassword" value="" placeholder="Repita su contraseña" />
+            <input class="form-control" name="repassword" type="password" id="repassword" value="" placeholder="Repita su contraseña" />
             <br>
-            <input  type="file" name="avatar" value=""/>
+            <div class="custom-file">
+             <input type="file" name="avatar" class="custom-file-input" value="" />
+             <label class="custom-file-label" for="validatedCustomFile" style="text-align: left;">Seleccione un avatar</label>
+           <div class="invalid-feedback">Example invalid custom file feedback</div>
+            <span><?= (isset($errores['avatar'])) ? $errores["avatar"] : "" ?></span>
+           </div>
+           <br>
             <br>
-            <br>
-            <button class="btn-buttom btn-primary" type="submit">Enviar</button>
-            
-            <button  class="btn-buttom btn-success" type="reset">Restablecer</button>
+            <button class= "btn btn-success btn-block btn-rounded z-depth-1" type="submit">Enviar</button>
+            <button  class="btn btn-secondary btn-block btn-rounded z-depth-1" type="reset">Restablecer</button>
           </form>
         
       </article> 

@@ -34,16 +34,16 @@ class BaseMYSQL extends BaseDatos{
 
     }
     public function leer(){
-        //A futuro trabajaremos en esto
+        
     }
     public function actualizar(){
-        //A futuro trabajaremos en esto
+        
     }
     public function borrar(){
-        //A futuro trabajaremos en esto
+        
     }
     public function guardar($usuario){
-        //Este fue el método usao para json
+        
     }
 
 } 

@@ -7,12 +7,12 @@ if (isset($_GET["id"])) {
   $usuarioSeleccionado = Query::mostrarUsuario($pdo,'users',$id_usuario);
 }
 
-//esto se ejecuta si el usuario indica que desea borrar el usuario
+
 if (isset($_POST["borrar"])) {
   Query::borrarUsuario($pdo,'users',$id_usuario);
   header('Location:listadoUsuariosAdmin.php');
   exit;
-//var_dump($_POST);
+
 }
 elseif (isset ($_POST["no"])) {
   header("Location:listadoUsuariosAdmin.php");
@@ -21,8 +21,13 @@ elseif (isset ($_POST["no"])) {
  ?>
 <html lang="es" dir="ltr">
   <head>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta charset="utf-8">
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Norican&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="css/master.css?v=<?php echo time(); ?>">
     <title></title>
   </head>
   <body>
