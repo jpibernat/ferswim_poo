@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `fer_swimwear` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
-USE `fer_swimwear`;
 -- MySQL dump 10.13  Distrib 5.7.20, for Linux (x86_64)
 --
 -- Host: localhost    Database: fer_swimwear
@@ -18,30 +16,57 @@ USE `fer_swimwear`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cart`
+-- Table structure for table `cart-product`
 --
 
-DROP TABLE IF EXISTS `cart`;
+DROP TABLE IF EXISTS `cart-product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cart` (
-  `idcart` int(11) NOT NULL AUTO_INCREMENT,
-  `idname` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `idproduct` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+CREATE TABLE `cart-product` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `total_price` int(11) NOT NULL,
-  `purchase_date` date NOT NULL,
-  PRIMARY KEY (`idcart`)
+  `total` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_cart-product_idx` (`product_id`,`id`),
+  KEY `fk_cart-product_id` (`product_id`),
+  CONSTRAINT `fk_cart-product` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cart`
+-- Dumping data for table `cart-product`
 --
 
-LOCK TABLES `cart` WRITE;
-/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+LOCK TABLES `cart-product` WRITE;
+/*!40000 ALTER TABLE `cart-product` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cart-product` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `carts`
+--
+
+DROP TABLE IF EXISTS `carts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `carts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user-id` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total` double NOT NULL,
+  `paymentmethod-id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `carts`
+--
+
+LOCK TABLES `carts` WRITE;
+/*!40000 ALTER TABLE `carts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -52,9 +77,9 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
-  `idcategory` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`idcategory`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -68,7 +93,6 @@ LOCK TABLES `category` WRITE;
 UNLOCK TABLES;
 
 --
-<<<<<<< HEAD
 -- Table structure for table `faq`
 --
 
@@ -94,8 +118,29 @@ INSERT INTO `faq` VALUES (1,'¿Cómo se cual es mi talla ideal?','Tu talle ideal
 UNLOCK TABLES;
 
 --
-=======
->>>>>>> 07579abdbdf6a0cdcf7524743bf28d8f2d7753d2
+-- Table structure for table `payment-methods`
+--
+
+DROP TABLE IF EXISTS `payment-methods`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `payment-methods` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `payment-methods`
+--
+
+LOCK TABLES `payment-methods` WRITE;
+/*!40000 ALTER TABLE `payment-methods` DISABLE KEYS */;
+/*!40000 ALTER TABLE `payment-methods` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `products`
 --
 
@@ -103,13 +148,13 @@ DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `products` (
-  `idproducts` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `unit_price` int(11) NOT NULL,
   `unit_cost` int(11) NOT NULL,
-  `category` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_id` int(11) NOT NULL,
   `description` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`idproducts`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -137,14 +182,9 @@ CREATE TABLE `users` (
   `password` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `avatar` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `role` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-<<<<<<< HEAD
   `users.id` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idusers`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-=======
-  PRIMARY KEY (`idusers`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
->>>>>>> 07579abdbdf6a0cdcf7524743bf28d8f2d7753d2
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,11 +193,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-<<<<<<< HEAD
-INSERT INTO `users` VALUES (1,'joaquin','','joaquin@dh.com','$2y$10$2grVNXe5u1oEHizMSk4wd.DaP0vTfjkEKr9cPx','5d421b7a28be0.png','1',''),(2,'sabri','','sabri@dh.com','$2y$10$u1Tq4wxvOQ//Umx8YL4cRu3TxEjg0S7TAS5BD9KBl/nVdLbf8IiQm','5d421c3dad819.png','1',''),(3,'coni','','coni@dh.com','$2y$10$DUn20yI26cDDwcJKeraEBOa1lklUTodVFWhUQCqoI24vf8uNS1rjW','5d4223c3851b2.png','1',''),(4,'Mila','','mila@gmail.com','$2y$10$MsDItcpt7i/31hGhy5X3f.hyVGIzsU3m5NQhgGeKRUHMDQmyoSPYm','5d4647863a96c.jpg','1',''),(5,'Joaquin','Pibernat','joaquin@gmail.com','$2y$10$7DXMorLYSUpaAnwlIdqdTOiPe386oV530BEG5k13sYlcJCjFbgUxC','5d465ab2d5c8c.png','9','');
-=======
-INSERT INTO `users` VALUES (1,'joaquin','','joaquin@dh.com','$2y$10$2grVNXe5u1oEHizMSk4wd.DaP0vTfjkEKr9cPx','5d421b7a28be0.png','1'),(2,'sabri','','sabri@dh.com','$2y$10$u1Tq4wxvOQ//Umx8YL4cRu3TxEjg0S7TAS5BD9KBl/nVdLbf8IiQm','5d421c3dad819.png','1'),(3,'coni','','coni@dh.com','$2y$10$DUn20yI26cDDwcJKeraEBOa1lklUTodVFWhUQCqoI24vf8uNS1rjW','5d4223c3851b2.png','1');
->>>>>>> 07579abdbdf6a0cdcf7524743bf28d8f2d7753d2
+INSERT INTO `users` VALUES (1,'joaquin','','joaquin@dh.com','$2y$10$2grVNXe5u1oEHizMSk4wd.DaP0vTfjkEKr9cPx','5d421b7a28be0.png','1',''),(2,'sabri','','sabri@dh.com','$2y$10$u1Tq4wxvOQ//Umx8YL4cRu3TxEjg0S7TAS5BD9KBl/nVdLbf8IiQm','5d421c3dad819.png','1',''),(3,'coni','','coni@dh.com','$2y$10$DUn20yI26cDDwcJKeraEBOa1lklUTodVFWhUQCqoI24vf8uNS1rjW','5d4223c3851b2.png','1',''),(4,'Mila','','mila@gmail.com','$2y$10$MsDItcpt7i/31hGhy5X3f.hyVGIzsU3m5NQhgGeKRUHMDQmyoSPYm','5d4647863a96c.jpg','1',''),(5,'Joaquin','Pibernat','joaquin@gmail.com','$2y$10$7DXMorLYSUpaAnwlIdqdTOiPe386oV530BEG5k13sYlcJCjFbgUxC','5d465ab2d5c8c.png','9',''),(6,'Gisela','Alvarez','gi@gmail.com','$2y$10$qBrjDZOaj16q/.H9t2MTCubcXTS5LzqJhd7k6Tg54oJF7QDvb2wp2','5d48f8017e1fa.png','1',''),(7,'Julieta','Cambao','juli@gmail.com','$2y$10$Lxh3jtj2b64g38xh3p.A5OpzlaKgAVGlIGHDFfdTBrvq3FtC97jGW','5d4b9fbc4d2b6.png','1','');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -170,8 +206,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2019-08-05  1:59:19
-=======
--- Dump completed on 2019-07-31 20:36:34
->>>>>>> 07579abdbdf6a0cdcf7524743bf28d8f2d7753d2
+-- Dump completed on 2019-08-10 13:07:15
