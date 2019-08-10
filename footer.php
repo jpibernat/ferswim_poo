@@ -12,19 +12,24 @@
     <script src="https://kit.fontawesome.com/519acca20a.js"></script>
 </head>
 <body>
-<footer class="footer mt-auto py-3 fcontent">
-  <section>
+<footer class="footer mt-auto py-3">
+  <section class="fmain">
         <div class="contact">
-            <p>CONTACTO:</p>
+            <h6>CONTACTO</h6>
             <p>Evergreen Street</p>
             <p>Springfield, EEUU</p>
-            <p>(011) 4356-6645.</p>
+            <p><a href="tel:+541143566645"></a>(011) 4356-6645</p>
         </div>
-        <div class="social">        
-            <p>EN LAS REDES</p>
-                  <a href="https://www.facebook.com/"><i class="fab fa-facebook-f fa-2x"></i></a>
-                  <a href="https://twitter.com/"><i class="fab fa-twitter fa-2x"></i></a>
-                  <a href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i></a>
+        <div class="social">       
+            <h6>EN LAS REDES</h6>
+                <section class="fsocial">
+                  <ul>
+                    <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f fa-2x"></i></a></li>
+                    <li><a href="https://twitter.com/"><i class="fab fa-twitter fa-2x"></i></a></li>
+                    <li><a href="https://www.instagram.com/"><i class="fab fa-instagram fa-2x"></i></a></li>
+                    <li><a href="mailto:info@ferswim.com.ar"><i class="far fa-envelope-open fa-2x"></i></a></li>
+                  </ul>
+                </section>
         </div>
         <div class="legal">
                   <p class="text-muted small">Mukineros.com @2019. | Todos los derechos reservados. |</p>
